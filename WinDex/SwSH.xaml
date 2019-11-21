@@ -1,0 +1,28 @@
+﻿<Window x:Class="WinDex.SwSH"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WinDex"
+        mc:Ignorable="d"
+        Title="WinDex: Pokémon Sword and Shield" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid DataContext="{StaticResource mvm}">
+        <ListView x:Name="lvLPKMN" ItemsSource="{Binding LPokemon}" SelectedItem="{Binding SelectedPokemon}" HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" MouseDoubleClick="lvLPKMN_MouseDoubleClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Border BorderBrush="{x:Null}" Height="32" Width="100">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Entry}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border BorderBrush="{x:Null}" Height="32" Width="500">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Center"/>
+                        </Border>
+                        <Image Height="32" Width="32" Source="{Binding P_Sprite}"></Image>
+                    </WrapPanel>
+                </DataTemplate>
+                    
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>
