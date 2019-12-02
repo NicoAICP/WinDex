@@ -13,6 +13,6 @@ namespace WinDex
     /// </summary>
     public partial class App : Application
     {
-        //WENN NICO DAS LIEST IST ER DOOF
+        
     }
 }

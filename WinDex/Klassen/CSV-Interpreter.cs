@@ -64,7 +64,7 @@ namespace WinDex
             {
                 case Editions.swsh:
                     System.Net.WebClient cln = new System.Net.WebClient();
-                    cln.DownloadFile("https://cdn.discordapp.com/attachments/496027184734011416/646519667942490115/swsh.csv", $"{path}swsh.csv");
+                    cln.DownloadFile("https://cdn.discordapp.com/attachments/385110561190445059/649384659289112577/swsh.csv", $"{path}swsh.csv");
                     break;
             }
         }

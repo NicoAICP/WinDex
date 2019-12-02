@@ -5,22 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinDex"
         mc:Ignorable="d"
-        Title="Pokémon: " Height="377.727" Width="771.364" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+        Title="Pokémon: " Height="373.599" Width="799.23" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid Margin="0,0,2,0" DataContext="{StaticResource mvm}">
-
-        <TextBlock x:Name="Entry" HorizontalAlignment="Left" Margin="10,6,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.Entry}" VerticalAlignment="Top" Height="59" Width="100" FontSize="40"/>
-        <Image  x:Name="Sprite"  HorizontalAlignment="Left" Height="250" Margin="10,69,0,0" VerticalAlignment="Top" Width="250" MouseEnter="Sprite_MouseEnter" MouseLeave="Sprite_MouseLeave"/>
-        <CheckBox x:Name="cN" Content="Caught non Shiny" IsChecked="{Binding SelectedPokemon.N_Caught}"  Margin="296,69,105.727,233" VerticalContentAlignment="Center" FontSize="25"/>
-        <CheckBox x:Name="cSH" Content="Caught Shiny" IsChecked="{Binding SelectedPokemon.S_Caught}" Margin="548,69,15,233" VerticalContentAlignment="Center" FontSize="25" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="eNS" HorizontalAlignment="Left" Margin="296,149,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.N_Encounter}" VerticalAlignment="Top" Height="60" Width="227" FontSize="40"/>
-        <Button Content="+1" FontSize="35" HorizontalAlignment="Left" Margin="528,149,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click"/>
-        <Button Content="-1" FontSize="35" HorizontalAlignment="Left" Margin="628,149,0,0" VerticalAlignment="Top" Width="75" Height="60" Grid.ColumnSpan="2"/>
-        <Button Content="-1" FontSize="35" HorizontalAlignment="Left" Margin="628,149,0,0" VerticalAlignment="Top" Width="75" Height="60" Grid.ColumnSpan="2" Click="Button_Click_1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="296,127,0,0" TextWrapping="Wrap" Text="Non Shiny Encounters" VerticalAlignment="Top" Height="60" Width="227" FontSize="20"/>
-        <TextBlock x:Name="eS" HorizontalAlignment="Left" Margin="296,250,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.S_Encounter}" VerticalAlignment="Top" Height="60" Width="227" FontSize="40"/>
-        <Button Content="+1" FontSize="35" HorizontalAlignment="Left" Margin="528,250,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click_2"/>
-        <Button Content="-1" FontSize="35" HorizontalAlignment="Left" Margin="628,250,0,0" VerticalAlignment="Top" Width="75" Height="60" Grid.ColumnSpan="2" Click="Button_Click_3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="296,228,0,0" TextWrapping="Wrap" Text="Shiny Encounters" VerticalAlignment="Top" Height="60" Width="227" FontSize="20"/>
+        <DockPanel Grid.ColumnSpan="2" Height="18" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Pokemon">
+                    <MenuItem x:Name="miEXPA" Header="Export Data" Click="miEXPA_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <TextBlock x:Name="Entry" HorizontalAlignment="Left" Margin="10,21,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.Entry}" VerticalAlignment="Top" Height="59" Width="100" FontSize="40"/>
+        <Image  x:Name="Sprite"  HorizontalAlignment="Left" Height="250" Margin="10,84,0,0" VerticalAlignment="Top" Width="250" MouseEnter="Sprite_MouseEnter" MouseLeave="Sprite_MouseLeave"/>
+        <Image x:Name="ShinyInd" Source="shiny.png" Margin="264,83,486,231" ToolTip="Shiny Sprite available!"/>
+        <CheckBox x:Name="cN" Content="Caught non Shiny" IsChecked="{Binding SelectedPokemon.N_Caught}"  Margin="325,71,77,231" VerticalContentAlignment="Center" FontSize="25"/>
+        <CheckBox x:Name="cSH" Content="Caught Shiny" IsChecked="{Binding SelectedPokemon.S_Caught}" Margin="577,71,-14,231" VerticalContentAlignment="Center" FontSize="25"/>
+        <TextBlock x:Name="eNS" HorizontalAlignment="Left" Margin="325,156,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.N_Encounter}" VerticalAlignment="Top" Height="60" Width="227" FontSize="40"/>
+        <Button Content="+1" FontSize="35" HorizontalAlignment="Left" Margin="557,156,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click"/>
+        <Button Content="-1" FontSize="35" HorizontalAlignment="Left" Margin="657,156,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click_1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,134,0,0" TextWrapping="Wrap" Text="Non Shiny Encounters" VerticalAlignment="Top" Height="60" Width="227" FontSize="20"/>
+        <TextBlock x:Name="eS" HorizontalAlignment="Left" Margin="325,257,0,0" TextWrapping="Wrap" Text="{Binding SelectedPokemon.S_Encounter}" VerticalAlignment="Top" Height="60" Width="227" FontSize="40"/>
+        <Button Content="+1" FontSize="35" HorizontalAlignment="Left" Margin="557,257,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click_2"/>
+        <Button Content="-1" FontSize="35" HorizontalAlignment="Left" Margin="657,257,0,0" VerticalAlignment="Top" Width="75" Height="60" Click="Button_Click_3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,235,0,0" TextWrapping="Wrap" Text="Shiny Encounters" VerticalAlignment="Top" Height="60" Width="227" FontSize="20"/>
 
     </Grid>
 </Window>

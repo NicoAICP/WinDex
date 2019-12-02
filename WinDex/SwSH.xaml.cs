@@ -34,5 +34,18 @@ namespace WinDex
                 pkmn.ShowDialog();
             }
         }
+
+
+        private void miIMP_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel mvm = (MainViewModel)Application.Current.FindResource("mvm");
+            Ex_import.Import(mvm);
+        }
+
+        private void miEXPA_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel mvm = (MainViewModel)Application.Current.FindResource("mvm");
+            Ex_import.ExportAll(mvm);
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace WinDex
     {
         MainViewModel mvm = (MainViewModel)Application.Current.FindResource("mvm");
         bool s = false;
+        bool shiny = true;
         public PKMN_Window()
         {
             InitializeComponent();
@@ -31,12 +32,18 @@ namespace WinDex
             Entry.Text = mvm.SelectedPokemon.Entry;
             cN.IsChecked = mvm.SelectedPokemon.N_Caught;
             cSH.IsChecked = mvm.SelectedPokemon.S_Caught;
-            if(mvm.SelectedPokemon.S_Sprite != "none" && mvm.SelectedPokemon.S_Sprite_Link != "none")
-            {
-                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
-            } else if(mvm.SelectedPokemon.N_Sprite != "none" && mvm.SelectedPokemon.N_Sprite_Link != "none")
+            this.Icon = new BitmapImage(new Uri(mvm.SelectedPokemon.P_Sprite));
+            if(mvm.SelectedPokemon.N_Sprite != "none" && mvm.SelectedPokemon.N_Sprite_Link != "none")
             {
                 Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.N_Sprite));
+            } else if(mvm.SelectedPokemon.S_Sprite != "none" && mvm.SelectedPokemon.S_Sprite_Link != "none")
+            {
+                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
+            }
+            if (mvm.SelectedPokemon.S_Sprite == "none" || mvm.SelectedPokemon.S_Sprite_Link == "none")
+            {
+                shiny = false;
+                ShinyInd.Visibility = Visibility.Hidden;
             }
         }
 
@@ -93,26 +100,43 @@ namespace WinDex
 
         private void Sprite_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (s)
+            if (shiny)
             {
-                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
+                if (s)
+                {
+                    Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.N_Sprite));
+                }
+                else
+                {
+                    Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
+                }
             }
-            else
-            {
-                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.N_Sprite));
-            }
+           
         }
 
         private void Sprite_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (s)
+            if (shiny)
             {
-                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.N_Sprite));
+                if (s)
+                {
+                    Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
+                }
+                else
+                {
+                    Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.N_Sprite));
+                }
             }
-            else
-            {
-                Sprite.Source = new BitmapImage(new Uri(mvm.SelectedPokemon.S_Sprite));
-            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void miEXPA_Click(object sender, RoutedEventArgs e)
+        {
+            Ex_import.ExportSingle(mvm.SelectedPokemon.export());
         }
     }
 }

@@ -164,7 +164,26 @@ namespace WinDex
         {
             return $"{Entry} {Name}";
         }
-
+        public List<string> export()
+        {
+            List<string> exp = new List<string>();
+            string n = "0";
+            string s = "0";
+            if (N_Caught)
+            {
+                n = "1";
+            }
+            if (S_Caught)
+            {
+                s = "1";
+            }
+            exp.Add(Entry);
+            exp.Add(n);
+            exp.Add(N_Encounter.ToString());
+            exp.Add(s);
+            exp.Add(S_Encounter.ToString());
+            return exp;
+        }
        
     }
 }
