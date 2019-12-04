@@ -47,5 +47,17 @@ namespace WinDex
             MainViewModel mvm = (MainViewModel)Application.Current.FindResource("mvm");
             Ex_import.ExportAll(mvm);
         }
+
+        private void miUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel mvm = (MainViewModel)Application.Current.FindResource("mvm");
+            mvm.UpdateDB(this);
+        }
+
+        private void miSearch_Click(object sender, RoutedEventArgs e)
+        {
+            search s = new search();
+            s.ShowDialog();
+        }
     }
 }

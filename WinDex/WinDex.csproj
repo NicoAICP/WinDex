@@ -92,6 +92,9 @@
     <Compile Include="PKMN-Window.xaml.cs">
       <DependentUpon>PKMN-Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="search.xaml.cs">
+      <DependentUpon>search.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SwSH.xaml.cs">
       <DependentUpon>SwSH.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PKMN-Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

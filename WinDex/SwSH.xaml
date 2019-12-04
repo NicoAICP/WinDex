@@ -12,7 +12,9 @@
                 <MenuItem Header="File">
                     <MenuItem x:Name="miEXPA" Header="Export All Data" Click="miEXPA_Click"/>
                     <MenuItem x:Name="miIMP" Header="Import" Click="miIMP_Click"/>
+                    <MenuItem x:Name="miUpdate" Header="Update DataBase" Click="miUpdate_Click"/>
                 </MenuItem>
+                <MenuItem Header="Search Pokémon" x:Name="miSearch" Click="miSearch_Click"/>
             </Menu>
         </DockPanel>
         <ListView x:Name="lvLPKMN" ItemsSource="{Binding LPokemon}" SelectedItem="{Binding SelectedPokemon}" HorizontalAlignment="Left" Height="399" Margin="10,25,0,0" VerticalAlignment="Top" Width="772" MouseDoubleClick="lvLPKMN_MouseDoubleClick">

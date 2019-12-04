@@ -7,6 +7,8 @@
 - Encounter Counter (Shiny, NonShiny)
 - Export of single or all files (in case the list gets updated so you can keep your entered data) to .wndx files
 - Import of data (.wndx)
+- Updating DataBase
+- Searching for Pokémon by using their Name or Entry Number (format: #Number)
 
 ## Planned Features
 

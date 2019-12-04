@@ -79,12 +79,71 @@ namespace WinDex
                     break;
             }
         }
+        public static void Download(Editions edition, SwSH sh)
+        {
+            switch (edition)
+            {
+                case Editions.swsh:
+                    
+                    CSV_Interpreter.Download(Editions.swsh);
+                    sh.Close();
+                    try
+                    {
+                        Directory.Delete(CSV_Interpreter.path + "SSprites", true);
+                    }
+                    finally
+                    {
+                        try
+                        {
+                            Directory.Delete(CSV_Interpreter.path + "NSprites", true);
+                        }
+                        finally
+                        {
+                            try
+                            {
+                                Directory.Delete(CSV_Interpreter.path + "Sprites", true);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+                        }
+                    }
+                   
+                    
+                    
+                    break;
+            }
+        }
+        public void UpdateDB(SwSH sh)
+        {
+            MessageBox.Show("For safety purposes you will be asked to choose a location where your programm data is exported.");
+            Ex_import.ExportAll(this);
+            Download(this.edition, sh);
+            MessageBox.Show("Please choose the FullBackup.wndx file you created earlier.");
+            Ex_import.Import(this);
+            MessageBox.Show("The programm will now restart and reinitialize after choosing an edition. This process may take up a few minutes.");
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+        }
         public static void CheckIfPathExists()
         {
             if (!Directory.Exists(CSV_Interpreter.path))
             {
                 CSV_Interpreter.CreateFolder();
             }
+        }
+        public Pokemon search(string name)
+        {
+            Pokemon p = null;
+            foreach(Pokemon pkmn in LPokemon)
+            {
+                if(pkmn.Name == name || pkmn.Entry == name)
+                {
+                    p = pkmn;
+                    break;
+                }
+            }
+            return p;
         }
     }
 }
