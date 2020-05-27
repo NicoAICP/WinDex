@@ -50,7 +50,7 @@ namespace WinDex
                 {
                     coughts = true;
                 }
-                lPokemon.Add(new Pokemon(split[0], split[1], coughtn, Convert.ToInt32(split[3]), coughts, Convert.ToInt32(split[5]), split[6], split[7], split[8]));
+                lPokemon.Add(new Pokemon(split[0], split[1], coughtn, Convert.ToInt32(split[3]), coughts, Convert.ToInt32(split[5])));
             }
 
             return lPokemon;

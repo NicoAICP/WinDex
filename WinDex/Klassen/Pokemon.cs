@@ -14,6 +14,7 @@ namespace WinDex
 {
     class Pokemon
     {
+        string linkbase = "https://raw.githubusercontent.com/stuff-by-3-random-dudes/WinDex-Pro/master/images/";
         public  string Entry { get; set; }
         public  string Name { get; set; }
         public  bool N_Caught { get; set; }
@@ -40,7 +41,7 @@ namespace WinDex
         {
 
         }
-        public Pokemon(string entry, string name, bool n_caught, int n_encounter, bool s_caught, int s_encounter, string p_sprite, string n_sprite, string s_sprite)
+        public Pokemon(string entry, string name, bool n_caught, int n_encounter, bool s_caught, int s_encounter)
         {
             Entry       =   entry;
             Name        =   name;
@@ -48,9 +49,9 @@ namespace WinDex
             N_Encounter =   n_encounter;
             S_Caught    =   s_caught;
             S_Encounter =   s_encounter;
-            P_Sprite_Link    =   p_sprite;
-            N_Sprite_Link   =    n_sprite;
-            S_Sprite_Link    =   s_sprite;
+            P_Sprite_Link    =   linkbase + $"{entry.Replace("#","")}/pixel.png";
+            N_Sprite_Link   = linkbase + $"{entry.Replace("#", "")}/normal.png";
+            S_Sprite_Link    = linkbase + $"{entry.Replace("#", "")}/shiny.png";
             #region S
             if ((!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\WinDex\SSprites\{Name}.png") || !File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\WinDex\SSprites\{Name.Split(':')[0]}.png")) && S_Sprite_Link != "none")
             {
@@ -69,7 +70,15 @@ namespace WinDex
                 }
 
                 System.Net.WebClient cln = new System.Net.WebClient();
-                cln.DownloadFile(S_Sprite_Link, file);
+                try
+                {
+                    cln.DownloadFile(S_Sprite_Link, file);
+                }
+                catch (Exception)
+                {
+
+                }
+                
 
             }
             if (Name.Contains(":"))
@@ -99,9 +108,16 @@ namespace WinDex
                 }
 
                 System.Net.WebClient cln = new System.Net.WebClient();
-                cln.DownloadFile(N_Sprite_Link, file);
+                try
+                {
+                    cln.DownloadFile(N_Sprite_Link, file);
+                }
+                catch (Exception)
+                {
 
-                
+                }
+
+
             }
             if (Name.Contains(":"))
             {
@@ -130,8 +146,15 @@ namespace WinDex
                 }
                      
                     System.Net.WebClient cln = new System.Net.WebClient();
+                try
+                {
                     cln.DownloadFile(P_Sprite_Link, file);
-                
+                }
+                catch (Exception)
+                {
+
+                }
+
             }
             if (Name.Contains(":"))
             {
@@ -158,7 +181,7 @@ namespace WinDex
             {
                 s = "1";
             }
-            return $"{Entry};{Name};{n};{N_Encounter};{s};{S_Encounter};{P_Sprite_Link};{N_Sprite_Link};{S_Sprite_Link}";
+            return $"{Entry};{Name};{n};{N_Encounter};{s};{S_Encounter};";
         }
         public override string ToString()
         {
